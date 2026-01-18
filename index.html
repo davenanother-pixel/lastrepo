@@ -1,1 +1,220 @@
+# Daven's World – Multi‑Language Project Landing Page
 
+This document contains **fully written (non‑placeholder) landing page implementations** across multiple languages and markup standards. Each version presents the same content:
+
+- **Site Title:** Daven's World
+- **Section Title:** My Projects
+- **Featured Project:** Iräx / ΙРäΞ
+- **Project Link:** https://davenanother-pixel.github.io/
+
+The intent is to showcase real, concrete implementations rather than abstract skeletons.
+
+---
+
+## 1. HTML (HTML5)
+```html
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <title>Daven's World</title>
+</head>
+<body>
+  <header>
+    <h1>Daven's World</h1>
+  </header>
+
+  <main>
+    <h2>My Projects</h2>
+    <ul>
+      <li>
+        <strong>Iräx / ΙРäΞ</strong><br />
+        <a href="https://davenanother-pixel.github.io/">https://davenanother-pixel.github.io/</a>
+      </li>
+    </ul>
+  </main>
+</body>
+</html>
+```
+
+---
+
+## 2. XHTML (Strict)
+```xml
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN"
+  "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+  <title>Daven's World</title>
+</head>
+<body>
+  <h1>Daven's World</h1>
+  <h2>My Projects</h2>
+  <ul>
+    <li>
+      <strong>Iräx / ΙРäΞ</strong><br />
+      <a href="https://davenanother-pixel.github.io/">https://davenanother-pixel.github.io/</a>
+    </li>
+  </ul>
+</body>
+</html>
+```
+
+---
+
+## 3. XML (Content Representation)
+```xml
+<?xml version="1.0" encoding="UTF-8"?>
+<site>
+  <title>Daven's World</title>
+  <section name="My Projects">
+    <project>
+      <name>Iräx / ΙРäΞ</name>
+      <url>https://davenanother-pixel.github.io/</url>
+    </project>
+  </section>
+</site>
+```
+
+---
+
+## 4. JavaScript (Node.js HTTP Server)
+```javascript
+const http = require('http');
+
+http.createServer((req, res) => {
+  res.writeHead(200, { 'Content-Type': 'text/html' });
+  res.end(`
+    <h1>Daven's World</h1>
+    <h2>My Projects</h2>
+    <p><strong>Iräx / ΙРäΞ</strong></p>
+    <a href="https://davenanother-pixel.github.io/">https://davenanother-pixel.github.io/</a>
+  `);
+}).listen(3000);
+```
+
+---
+
+## 5. TypeScript (Node.js)
+```ts
+import http from 'http';
+
+http.createServer((_, res) => {
+  res.writeHead(200, { 'Content-Type': 'text/html' });
+  res.end(`
+    <h1>Daven's World</h1>
+    <h2>My Projects</h2>
+    <p><strong>Iräx / ΙРäΞ</strong></p>
+    <a href="https://davenanother-pixel.github.io/">https://davenanother-pixel.github.io/</a>
+  `);
+}).listen(3000);
+```
+
+---
+
+## 6. Python (Built‑in HTTP Server)
+```python
+from http.server import BaseHTTPRequestHandler, HTTPServer
+
+class Handler(BaseHTTPRequestHandler):
+    def do_GET(self):
+        self.send_response(200)
+        self.send_header('Content-type', 'text/html')
+        self.end_headers()
+        self.wfile.write(b"""
+<h1>Daven's World</h1>
+<h2>My Projects</h2>
+<p><strong>Ira\xc3\xa4x / \xce\x99\xd0\xa0\xc3\xa4\xce\x9e</strong></p>
+<a href='https://davenanother-pixel.github.io/'>https://davenanother-pixel.github.io/</a>
+""")
+
+HTTPServer(('0.0.0.0', 8000), Handler).serve_forever()
+```
+
+---
+
+## 7. Lua (LuaSocket)
+```lua
+local socket = require("socket")
+local server = assert(socket.bind("*", 8080))
+
+while true do
+  local client = server:accept()
+  client:send("HTTP/1.1 200 OK\r\nContent-Type: text/html\r\n\r\n")
+  client:send("<h1>Daven's World</h1>")
+  client:send("<h2>My Projects</h2>")
+  client:send("<p><strong>Iräx / ΙРäΞ</strong></p>")
+  client:send("<a href='https://davenanother-pixel.github.io/'>https://davenanother-pixel.github.io/</a>")
+  client:close()
+end
+```
+
+---
+
+## 8. Perl (CGI‑Style Output)
+```perl
+print "Content-type: text/html\n\n";
+print "<h1>Daven's World</h1>";
+print "<h2>My Projects</h2>";
+print "<p><strong>Iräx / ΙРäΞ</strong></p>";
+print "<a href='https://davenanother-pixel.github.io/'>https://davenanother-pixel.github.io/</a>";
+```
+
+---
+
+## 9. Ruby (WEBrick)
+```ruby
+require 'webrick'
+
+server = WEBrick::HTTPServer.new(:Port => 8001)
+server.mount_proc '/' do |req, res|
+  res.body = <<~HTML
+    <h1>Daven's World</h1>
+    <h2>My Projects</h2>
+    <p><strong>Iräx / ΙРäΞ</strong></p>
+    <a href="https://davenanother-pixel.github.io/">https://davenanother-pixel.github.io/</a>
+  HTML
+end
+
+trap('INT') { server.shutdown }
+server.start
+```
+
+---
+
+## 10. Rust (Tiny HTTP Server)
+```rust
+use std::io::Write;
+use std::net::TcpListener;
+
+fn main() {
+    let listener = TcpListener::bind("127.0.0.1:7878").unwrap();
+
+    for stream in listener.incoming() {
+        let mut stream = stream.unwrap();
+        let response = "HTTP/1.1 200 OK\r\nContent-Type: text/html\r\n\r\n\
+<h1>Daven's World</h1>
+<h2>My Projects</h2>
+<p><strong>Iräx / ΙРäΞ</strong></p>
+<a href='https://davenanother-pixel.github.io/'>https://davenanother-pixel.github.io/</a>";
+        stream.write_all(response.as_bytes()).unwrap();
+    }
+}
+```
+
+---
+
+## 11. Fortran (Console HTML Output)
+```fortran
+program daven_world
+  print *, '<h1>Daven''s World</h1>'
+  print *, '<h2>My Projects</h2>'
+  print *, '<p><strong>Iräx / ΙРäΞ</strong></p>'
+  print *, '<a href="https://davenanother-pixel.github.io/">https://davenanother-pixel.github.io/</a>'
+end program daven_world
+```
+
+---
+
+This structure is intentionally explicit, concrete, and consistent across languages, making it suitable for a **polyglot showcase repository** or documentation site.
